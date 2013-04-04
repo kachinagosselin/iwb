@@ -1,0 +1,30 @@
+<!-- This is where messages are edited. Only used if messages are saved as drafts. -->
+<div class="white-background">
+<div class="row-fluid">
+<div class="span3" >
+    <div class="nav messages-sidenav" >    
+        <ul class="nav-list">
+          <li><div class="compose"><button class="btn btn-block" type="button"><%= link_to 'Compose Message', new_user_message_path(@user) %></button></div></li>
+          <li class="divider-horizontal"></li>
+          <li><%= link_to 'Inbox', user_messages_path(@user) %></li>
+          <li class="divider-horizontal"></li>
+          <li class="active"><%= link_to 'Drafts', user_messages_drafts_path(@user) %></li>
+          <li class="divider-horizontal"></li>
+          <li><%= link_to 'Sent', user_messages_sent_path(@user)  %></li>
+          <li class="divider-horizontal"></li>
+          <li><%= link_to 'Archive', user_messages_archive_path(@user)  %></li>
+          <li class="divider-horizontal"></li>
+          <li><%= link_to 'Trash', user_messages_trash_path(@user)  %></li>
+          <li class="divider-horizontal"></li>
+          <li class="active center-align"><%= link_to 'View Contacts', user_contacts_path(@user) %></li>
+        </ul>
+    </div>
+</div>
+<div class="span9">
+<h1>Editing Draft Message</h1>
+
+<%= render 'form_edit' %>
+
+</div>
+</div>
+</div>

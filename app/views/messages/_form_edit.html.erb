@@ -1,0 +1,17 @@
+<%= simple_form_for([@user, @message]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.hidden_field :to_user_id %>
+    <%= f.hidden_field :from_user_id, :value => @user.id %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+    <%= f.button :submit, 'Send', :name => 'send_button' %>
+
+  </div>
+<% end %>

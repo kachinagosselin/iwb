@@ -3,21 +3,26 @@
   });
 </script>
 
-<%= simple_form_for(@project, :html => {:id => 'edit_project', :class => 'form-vertical', :multipart => true }) do |f| %>
+<%= simple_form_for(@project, :html => {:id => 'edit_project', :class => 'form-horizontal', :multipart => true }) do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">    
-    <%=h f.input :name %>
-    <%=h f.input :city %>
-    <%= f.input :country %>
-    <%=h f.input :partner_organizations %>
-    <%=h f.input :overview %>
-    <%=h f.input :subject_tag %>
+    <%=h f.input :name, :label => "Title", :input_html => { :style => 'width: 525px'} %>
+    <div class="row">
+    <div class="span4">
+    <%=h f.input :city %></div>
+    <div class="span1">
+    <%= f.input :country %></div>
+  </div>
+    <%=h f.input :partner_organizations, :label => "Partners", :input_html => { :style => 'width: 525px'} %>
+    <%=h f.input :overview,  :as => :text, :label => "Summary", 
+    :input_html => { :style => 'width: 525px', :rows => 12 }  %>
+    <%=h f.input :subject_tag, :label => "Tags", :input_html => { :style => 'width: 525px'} %>
   </div>
 
   <div class="form-actions">
     <span class="pull-right">
       <%= link_to 'Cancel', projects_path(), class: 'btn' %>
-      <%= f.button :submit %>
+      <%= f.button :submit, class: 'btn btn-primary'%>
     </span>
   </div>
 <% end %>

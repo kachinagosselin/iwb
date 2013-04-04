@@ -15,6 +15,7 @@
   float: left;
   padding-right: 8px;
 }
+
 ul.nav {
   list-style: none;
   margin: 0 0 2em;
@@ -36,6 +37,10 @@ ul.nav li {
   border: solid 1px #C66;
 }
 
+.content{
+margin-top:60px;
+}
+
 .display{
 height: 245px;
 width:275px;
@@ -53,6 +58,32 @@ height: auto;
 width: 800px;
 }
 
-.projects ul{
+ul{
 list-style-type:none;
 }
+
+
+/*DIVIDERS*/
+.divider-vertical {
+height: 42px;
+width: 1px;
+margin: 0 5px;
+overflow: hidden;
+background-color: gainsboro;
+border-right: 1px solid white;
+}
+
+.horizontal-divider {
+height: 1px;
+width: 100%;
+margin: 0px 0px 10px 0px;
+overflow: hidden;
+background-color: gainsboro;
+border-right: 1px solid white;
+}
+
+
+a:link{
+text-decoration:none;
+}
+

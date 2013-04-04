@@ -1,14 +1,20 @@
-<h3>Appropriate Technology Project Archive </h3>
+<h3 style="text-align:center;">Appropriate Technology Project Archive </h3>
 <div class="projects">
   <ul>
   <% @projects.each do |project| %>
     <li>
-      <%= link_to project.name, project %> added <%= project.created_at.to_date %>
+      <p><%= link_to project.name, project %> added <%= project.created_at.to_date %></p>
       <%= project.overview %>
       <%= project.city if project.city %> <%= project.country if project.country %>
+      <div class="horizontal-divider"></div>
     </li>
   <% end %>
   </ul>
+
+  <% if user_signed_in? %>
+      <%= link_to 'Add Project', new_project_path(), class: 'btn btn-primary', :style =>'float: right' %>
+  <% else %>
+      <p> Please register to add content to this page. </p>
+  <% end %>
 </div>
 
-      <%= link_to 'Add Project', new_project_path() %>

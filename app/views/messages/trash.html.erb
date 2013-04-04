@@ -1,0 +1,63 @@
+<!-- This is the user inbox. -->
+<div class="white-background">
+<div class="row-fluid">
+<div class="span3" >
+    <div class="nav messages-sidenav" >    
+        <ul class="nav-list">
+          <li><div class="compose"><button class="btn btn-block" type="button"><%= link_to 'Compose Message', new_user_message_path(@user) %></button></div></li>
+          <li class="divider-horizontal"></li>
+          <li><%= link_to 'Inbox', user_messages_path(@user) %></li>
+          <li class="divider-horizontal"></li>
+          <li><%= link_to 'Drafts', user_messages_drafts_path(@user) %></li>
+          <li class="divider-horizontal"></li>
+          <li><%= link_to 'Sent', user_messages_sent_path(@user)  %></li>
+          <li class="divider-horizontal"></li>
+          <li><%= link_to 'Archive', user_messages_archive_path(@user)  %></li>
+          <li class="divider-horizontal"></li>
+          <li class="active"><%= link_to 'Trash', user_messages_trash_path(@user)  %></li>
+          <li class="divider-horizontal"></li>
+          <li class="center-align"><%= link_to 'View Contacts', user_contacts_path(@user) %></li>
+        </ul>
+    </div>
+</div>
+<div class="span9">
+<h1>Welcome to Your Trash Folder</h1>
+</br>
+<table class="table">
+  <tr>
+    <th>From name</th>
+    <th>Title</th>
+    <th>Date</th>
+    <th></th>
+  </tr>
+
+<% @user = current_user %>
+<% @distinct_messages = @user.messages.select("DISTINCT(PARENT_ID)") %>
+<% @messages_in_folder = Array.new%>
+<% @distinct_messages.each do |m| %>
+<% @messages = @user.messages.find(:all, :conditions => {:parent_id => m.parent_id}) %>
+<% @messages_sorted = @messages.sort_by(&:thread_count).reverse %>
+<% @messages_sorted.each do |m| %>
+<% if m.folder == "trash" %>
+<% @messages_in_folder << m%>
+<% break %>
+<% end %>
+<% end %>
+<% end %>
+<% @mif = @messages_in_folder.sort_by(&:created_at).reverse %>
+<% @mif.each do |message| %>
+  <tr>
+    <td><%= message.from_name%></td>
+    <td><%= link_to message.title,  user_message_path(@user, message) %></td>
+    <td><%= message.return_time %></td>
+    <td><%= link_to 'Return to Archives', {:controller => 'messages', :action => 'archive', :id => message.id} %></td>
+    <td><%= link_to 'Delete', [message.user, message], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+</div>
+</div>
+</div>
