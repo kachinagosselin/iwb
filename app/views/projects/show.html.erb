@@ -1,0 +1,8 @@
+<h3>Project</h3>
+<p>Title: <%= @project.name %></p>
+<p>Description: <%= @project.overview if @project.overview %></p>
+<p>Location: <%= @project.city if @project.city %>, <% @project.country if @project.country %></p>
+<p>Partner Organizations: <%= @project.partner_organizations if @project.partner_organizations %></p>
+<p>Tags: <%= @project.subject_tag if @project.subject_tag %></p>
+    <%= link_to 'Edit', edit_project_path(@project) %> |
+    <%= link_to 'Back', projects_path() %>

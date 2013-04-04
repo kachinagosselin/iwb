@@ -20,3 +20,8 @@ gem "quiet_assets", ">= 1.0.2", :group => :development
 gem "figaro", ">= 0.6.3"
 gem "better_errors", ">= 0.7.2", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
+gem "simple_form", ">= 2.0.4"
+gem 'country_select'
+gem "paperclip", "~> 3.0"
+gem "rmagick", "2.12.0", :require => 'RMagick'
+gem 'heroku'

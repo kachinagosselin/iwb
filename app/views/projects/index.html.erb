@@ -1,0 +1,14 @@
+<h3>Appropriate Technology Project Archive </h3>
+<div class="projects">
+  <ul>
+  <% @projects.each do |project| %>
+    <li>
+      <%= link_to project.name, project %> added <%= project.created_at.to_date %>
+      <%= project.overview %>
+      <%= project.city if project.city %> <%= project.country if project.country %>
+    </li>
+  <% end %>
+  </ul>
+</div>
+
+      <%= link_to 'Add Project', new_project_path() %>
