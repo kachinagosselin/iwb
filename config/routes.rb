@@ -15,5 +15,7 @@ MakerSource::Application.routes.draw do
         resources :messages
         resources :contacts
     end
-    resources :projects
+    resources :projects do
+        resources :assets
+    end
 end

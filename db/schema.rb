@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404180124) do
+ActiveRecord::Schema.define(:version => 20130404213449) do
+
+  create_table "assets", :force => true do |t|
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
+    t.string   "document_remote_url"
+    t.integer  "project_id"
+  end
 
   create_table "contacts", :force => true do |t|
     t.integer  "user_id"

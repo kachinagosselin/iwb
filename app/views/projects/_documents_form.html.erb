@@ -1,0 +1,22 @@
+<script>
+  $(document).ready(function(){
+});
+</script>
+
+<%= simple_form_for(:asset, :url => project_assets_path(@project), :method => :post, :remote => true ) do |f| %>
+
+
+    <p> You can upload documents about this project below:</p>
+    <div class="form-inputs">    
+    <div class="row">
+    <div class="span1" style="width:100px;">Provide URL: </div>
+    <div class="span3" style="width:100px;"><%=h f.text_field :document_url, :style=>"width:380px;" %></div> 
+    </div>
+</div>
+  <div class="form-actions">
+    <span class="pull-right">
+      <%= f.button :submit %>
+    </span>
+</div>
+<% end %>
+

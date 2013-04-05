@@ -4,5 +4,18 @@
 <p>Location: <%= @project.city if @project.city %>, <% @project.country if @project.country %></p>
 <p>Partner Organizations: <%= @project.partner_organizations if @project.partner_organizations %></p>
 <p>Tags: <%= @project.subject_tag if @project.subject_tag %></p>
-    <%= link_to 'Edit', edit_project_path(@project) %> |
-    <%= link_to 'Back', projects_path() %>
+
+<% if @project.assets.present? %>
+<% @project.asset.documents.each do |document| %>
+<%= @document.document_url %>
+<% end %>
+<% else %>
+<p> There are no attachments for this project.</p>
+<% end %>
+
+<% if user_signed_in? %>
+<%= render 'documents_form' %>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<% end %>
+
+<%= link_to 'Back', projects_path() %>
