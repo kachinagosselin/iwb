@@ -1,3 +1,26 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<div class="background-image"></div>\
+
+<div class="user-summary offset1">
+
+	<div class='span3' style="text-align:center;">
+		<%= image_tag @user.avatar.url(:medium), :class => "img-circle", :style => "margin:10px;"  %>
+		<% if @user == current_user %>
+		<p>Email: <%= @user.email if @user.email %></p>
+		<%= link_to 'Edit Your Profile', edit_user_registration_path %>
+	<% end %>
+	</div>
+
+	<div class='span7'>
+		<div class='row'>
+		<div class='span3'>
+		<h4><%= @user.name %></h4>
+		</div>
+		<p style="text-align:right;margin-top:10px;margin-right:15px;"> Berkeley, United States </p>
+		</div>
+		<p>BS in Aeronautics and Astronautics from Massachusetts Institute of Technology</p>
+		<p>Self description of passions, interests and experiences ... orem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tempus consequat augue, et dapibus urna laoreet sollicitudin. Pellentesque ac mollis nisi. Maecenas lacus massa, varius sed ultricies sit amet, pellentesque ut purus. Etiam scelerisque risus pellentesque ante feugiat fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum eleifend, elit a rhoncus egestas, leo metus sodales tortor, at scelerisque ipsum ipsum in arcu. Pellentesque eget est et mi pharetra gravida a eget tellus. Duis eget ipsum nisi, non semper magna. Duis eget sem erat, nec congue orci. In sed lorem justo. Aliquam ullamcorper posuere orci, ac feugiat risus dictum ac. Pellentesque id diam diam, at pretium elit.Ut fermentum feugiat neque at tempor. Nunc nibh magna, pretium eget porta eget, vulputate et massa. Donec elementum vestibulum nulla sit amet laoreet. Vestibulum nec turpis in velit faucibus varius. </p>
+	</div>
+
+	<div> 
+
+</div>

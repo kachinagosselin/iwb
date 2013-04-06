@@ -1,21 +1,25 @@
-<h3>Project</h3>
-<p>Title: <%= @project.name %></p>
+
+<%= image_tag @project.main_image.url, :style => "min-width:1024px;" %>
+
+<div class="offset2">
+<h3><%= @project.name %></h3>
 <p>Description: <%= @project.overview if @project.overview %></p>
 <p>Location: <%= @project.city if @project.city %>, <% @project.country if @project.country %></p>
 <p>Partner Organizations: <%= @project.partner_organizations if @project.partner_organizations %></p>
 <p>Tags: <%= @project.subject_tag if @project.subject_tag %></p>
 
 <% if @project.assets.present? %>
-<% @project.asset.documents.each do |document| %>
-<%= @document.document_url %>
+<% @project.assets.each do |asset| %>
+<p><%= link_to "Printable Case (PDF)", project_asset_path(@project, asset) %></p>
 <% end %>
 <% else %>
 <p> There are no attachments for this project.</p>
 <% end %>
 
 <% if user_signed_in? %>
-<%= render 'documents_form' %>
+<%= render 'assets/documents_form' %>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <% end %>
 
 <%= link_to 'Back', projects_path() %>
+</div>

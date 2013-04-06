@@ -3,9 +3,9 @@
   });
 </script>
 
-<%= simple_form_for(@project, :html => {:id => 'edit_project', :class => 'form-horizontal', :multipart => true }) do |f| %>
+<%= simple_form_for(@project, :html => {:id => 'edit_project', :class => 'form-vertical', :multipart => true }) do |f| %>
   <%= f.error_notification %>
-  <div class="form-inputs">    
+  <div class="form-inputs offset1">    
     <%=h f.input :name, :label => "Title", :input_html => { :style => 'width: 525px'} %>
     <div class="row">
     <div class="span4">
@@ -16,7 +16,9 @@
     <%=h f.input :partner_organizations, :label => "Partners", :input_html => { :style => 'width: 525px'} %>
     <%=h f.input :overview,  :as => :text, :label => "Summary", 
     :input_html => { :style => 'width: 525px', :rows => 12 }  %>
-    <%=h f.input :subject_tag, :label => "Tags", :input_html => { :style => 'width: 525px'} %>
+    <%=h f.input :subject_tag, :label => "Tags", :input_html => { :style => 'width: 525px'}
+     %>
+    <%= f.file_field :main_image, :label => "Main Image" %>
   </div>
 
   <div class="form-actions">
