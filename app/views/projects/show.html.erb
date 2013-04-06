@@ -1,13 +1,65 @@
-
+<div class="header_image" style="height:560px;overflow:hidden;z-index:0;">
 <%= image_tag @project.main_image.url, :style => "min-width:1024px;" %>
+</div>
 
-<div class="offset2">
-<h3><%= @project.name %></h3>
+
+<div class="offset2 span12" style="position:relative;margin-top:-500px;color:white;">
+	<h3 style=""><%= @project.name %></h3>
+		<p> One or two sentence overview of the product or device. Lorem ipsum etc. </p>
+		<ul class="span3" style="color:white;">
+			Table Of Contents
+			<li>Community Partner</li>
+			<li>Problem Statement</li>
+			<li>Current Documentation</li>
+		</ul>
+<div class="border offset6" style="background: rgba(0, 0, 0, .5);">
+	<h3> Required Skills </h3>
+	<p> Here we list the </p>
+	<p>relevant skills that are </p>
+	<p> required to make this </p>
+	<p> project happen </p>
+<div style="display:none;"
 <p>Description: <%= @project.overview if @project.overview %></p>
 <p>Location: <%= @project.city if @project.city %>, <% @project.country if @project.country %></p>
 <p>Partner Organizations: <%= @project.partner_organizations if @project.partner_organizations %></p>
 <p>Tags: <%= @project.subject_tag if @project.subject_tag %></p>
+</div>
 
+</div>
+</div>
+
+<div style="height:250px;background-color:#fff;">
+	<div class="offset2 span12" >
+		<h3 style="text-align:center;"> Community Partner </h3>
+		<p>Have community image display halfway between this section and the header image above. Text describingg the background information about this community and why it needs this technology. Have stats on community size and location. Have quote from community.</p>
+	</div>
+</div>
+
+<div style="height:250px;background-color:#fff;">
+	<div class="offset2 span12" >
+		<h3 style="text-align:center;"> Problem Statement</h3>
+	</div>
+</div>
+
+<div style="height:250px;background-color:#999;">
+	<div class="offset2 span12" >
+		<h3 style="text-align:center;">Current Documentation </h3>
+		<p> Have here a slideshow of document icon images each representing a document uploaded to the project (MVP) Have link in corner that creates modal window for uploading new documents. </p>
+		<p>Adv: Display name on icon. When hover display rating and download button. Can send users to page listing all documents where communities can submit rating of the document and leave comments for it's improvement. </p>
+		<p>Note: Since documents in this section can be rated and reviewed I hope that users will use it to store final documentation rather than working docs. May need to keep this in mind as developings site. </p>
+	</div>
+</div>
+
+<div class="horizontal-divider"></div>
+
+<div style="height:250px;background-color:#fff;">
+	<div class="offset2 span12" >
+		<h3 style="text-align:center;"> Active Task List </h3>
+	</div>
+</div>
+
+<div style="height:250px;background-color:#fff;display:none;">
+<div class="offset2 span12">
 <% if @project.assets.present? %>
 <% @project.assets.each do |asset| %>
 <p><%= link_to "Printable Case (PDF)", project_asset_path(@project, asset) %></p>
@@ -15,11 +67,45 @@
 <% else %>
 <p> There are no attachments for this project.</p>
 <% end %>
-
 <% if user_signed_in? %>
 <%= render 'assets/documents_form' %>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <% end %>
 
 <%= link_to 'Back', projects_path() %>
+</div>
+</div>
+
+
+<div style="height:150px;background-color:#999;">
+	<div class="offset2 span12" >
+		<h3 style="text-align:center;"> Partner Organizations </h3>
+	</div>
+</div>
+
+<div style="height:200px;background-color:#444;">
+	<div class="offset2 span14" >
+		<ul class="span3" style="margin-top:25px;color:white;">
+			DISCOVER
+			<li>Documented Projects</li>
+			<li>Active Projects</li>
+			<li>Create Project</li>
+		</ul>
+		<ul class="span3" style="margin-top:25px;color:white;">
+			ABOUT
+			<li>How It Works</li>
+			<li>Mission</li>
+			<li>Team</li>
+		</ul>
+		<ul class="span4" style="margin-top:25px;color:white;">
+			CONTACT
+			<li>Partners</li>
+			<li>Press</li>
+			<li>Jobs</li>
+		</ul>
+			<p class="span4" style="margin-top:25px;color:white;">
+			APPROMONDE 2013
+			<p class="span4"  style="color:white;">Privacy Policy, Terms</p>
+		</ul>
+	</div>
 </div>
