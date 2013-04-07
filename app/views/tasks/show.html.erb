@@ -15,15 +15,15 @@
 			<li><a href="#active-tasks">Active Task List</a></li>
 			<li><a href="#partner-organizations">Partner Organizations</a></li>
 		</ul>
-<div class="border offset7" style="z-index:0;background: rgba(0, 0, 0, .5);">
-	<h4 style="text-align:center;"> Required Skills </h4>
-	<% @project.tasks.select("DISTINCT(SKILL)").each do |task| %>
-		<li><%= task.skill %></li>
-	<% end %>
-	</br>
-	<a href="#active-tasks" class="button">Contribute</a>
-	</br>
-	<p style="text-align:center;font-size:11px;"> (missing skills to help out go to relevant courses) </p>
+<div class="border offset7" style="background: rgba(0, 0, 0, .5);">
+	<h3> Required Skills </h3>
+	<p> Here we list the </p>
+	<p>relevant skills that are </p>
+	<p> required to make this </p>
+	<p> project happen </p>
+	<p> Image of moderator (if any) in the corner. </p>
+	<p> Link to contact moderator or to go to active tasks. </p>
+	<p> missing skills to help out go to relevant courses </p>
 <div style="display:none;"
 <p>Description: <%= @project.overview if @project.overview %></p>
 <p>Location: <%= @project.city if @project.city %>, <% @project.country if @project.country %></p>
@@ -31,9 +31,6 @@
 <p>Tags: <%= @project.subject_tag if @project.subject_tag %></p>
 </div>
 
-</div>
-<div style="position:absolute;left:850px;top:75px;z-index:999;">
-	<%= image_tag User.find(1).avatar.url(:thumb), :class => "img-circle" %>
 </div>
 </div>
 
@@ -64,25 +61,7 @@
 <div id="active-tasks" style="height:250px;background-color:#fff;">
 	<div class="offset2 span12" >
 		<h3 style="text-align:center;"> Active Task List </h3>
-			<table class="table table-striped">
-			<thead>
-				<td>Title</td>
-				<td>Summary</td>
-				<td>Skill</td>
-				<td></td>
-			</thead>
-				<% @project.tasks.each do |task| %>
-				<tr>
-					<td><%= task.title %></td>
-				<td><%= task.summary %></td>
-				<td><%= task.skill %></td>
-				<td><%= link_to 'View', project_task_path(@project, task), class: 'btn btn-primary', :style =>'float: right' %>
-				</td>
-				</tr>
-			<% end %>
-			</table>
-
-		      <%= link_to 'Add Task', new_project_task_path(@project), class: 'btn btn-primary', :style =>'float: right' %>
+		<%= @task.title %>
 	</div>
 </div>
 
@@ -105,17 +84,9 @@
 </div>
 
 
-<div id="" style="height:150px;background-color:#69B4BD;">
+<div id="partner-organizations" style="height:150px;background-color:#999;">
 	<div class="offset2 span12" >
-		<h5 style="text-align:center;"> pitch to contribute to project</h5>
-	</div>
-</div>
-
-<div id="partner-organizations" style="height:350px;background-color:#fff;">
-	<div class="offset2 span12" >
-		<p class="span2" style="margin-top:65px;text-align:left;"> SUPPORTED BY </p>
-
-		<p style="margin-top:165px;text-align:center;">with contributors like you</p>
+		<h3 style="text-align:center;"> Partner Organizations </h3>
 	</div>
 </div>
 

@@ -17,5 +17,6 @@ MakerSource::Application.routes.draw do
     end
     resources :projects do
         resources :assets
+        resources :tasks
     end
 end

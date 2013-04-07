@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406010051) do
+ActiveRecord::Schema.define(:version => 20130407162853) do
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at",            :null => false
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(:version => 20130406010051) do
     t.string   "main_image_content_type"
     t.integer  "main_image_file_size"
     t.datetime "main_image_updated_at"
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.string   "title"
+    t.string   "summary"
+    t.string   "skill"
+    t.boolean  "active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "project_id"
   end
 
   create_table "users", :force => true do |t|
