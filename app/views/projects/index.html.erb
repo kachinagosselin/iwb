@@ -1,10 +1,13 @@
 <h3 style="text-align:center;">Appropriate Technology Project Archive </h3>
-<div class="projects">
+<div class="border offset2 projects">
   <ul>
   <% @projects.each do |project| %>
     <li>
+      <div class="span3">
+        <%= image_tag project.main_image.url, :style => "margin:10px;margin-left:-20px;margin-bottom:20px;height:160px;width:200px;" %>
+      </div>
       <p><%= link_to project.name, project %> added <%= project.created_at.to_date %></p>
-      <%= project.overview %>
+      <%= project.summary %>
       <%= project.city if project.city %> <%= project.country if project.country %>
       <div class="horizontal-divider"></div>
     </li>
@@ -14,7 +17,7 @@
   <% if user_signed_in? %>
       <%= link_to 'Add Project', new_project_path(), class: 'btn btn-primary', :style =>'float: right' %>
   <% else %>
-      <p> Please register to add content to this page. </p>
+      <p style="text-align:center;"> Please register to add content to this page. </p>
   <% end %>
 </div>
 

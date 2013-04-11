@@ -1,4 +1,4 @@
-<div class="header_image" style="height:560px;overflow:hidden;z-index:0;">
+<div class="header_image" style="-webkit-filter: grayscale;-webkit-filter: brightness(60%);height:560px;overflow:hidden;z-index:0;">
 <%= image_tag @project.main_image.url, :style => "min-width:1024px;" %>
 </div>
 
@@ -6,9 +6,9 @@
 <div class="offset2 span12" style="position:relative;margin-top:-500px;color:white;">
 	<h3 style=""><%= @project.name %></h3>
 		<p> Started <%= @project.created_at.to_date.to_formatted_s(:long)  %> , Last activity on <%= @project.updated_at.to_date.to_formatted_s(:long) %></p>
-		<p> One or two sentence overview of the product or device. Lorem ipsum etc. </p>
-		<ul class="span3" style="color:white;">
-			Table Of Contents
+		<p>Tags: <%= @project.subject_tag if @project.subject_tag %></p>
+`		<ul class="toc span3" style="color:white;">
+			<h5>TABLE OF CONTENTS</h5>
 			<li><a href="#community-partner">Community Partner</a></li>
 			<li><a href="#problem-statement">Problem Statement</a></li>
 			<li><a href="#current-documentation">Current Documentation</a></li>
@@ -17,21 +17,18 @@
 		</ul>
 <div class="border offset7" style="z-index:0;background: rgba(0, 0, 0, .5);">
 	<h4 style="text-align:center;"> Required Skills </h4>
+
+	<div style="margin-left:80px;">
 	<% @project.tasks.select("DISTINCT(SKILL)").each do |task| %>
-		<li><%= task.skill %></li>
+		<li ><%= task.skill %></li>
 	<% end %>
-	</br>
-	<a href="#active-tasks" class="button">Contribute</a>
-	<%= link_to 'Edit', edit_project_path(@project) %> |
+	</div>
 
 	</br>
+	<a href="#active-tasks" class="button">Contribute</a>
+	</br>
 	<p style="text-align:center;font-size:11px;"> (missing skills to help out go to relevant courses) </p>
-<div style="display:none;"
-<p>Description: <%= @project.overview if @project.overview %></p>
-<p>Location: <%= @project.city if @project.city %>, <% @project.country if @project.country %></p>
-<p>Partner Organizations: <%= @project.partner_organizations if @project.partner_organizations %></p>
-<p>Tags: <%= @project.subject_tag if @project.subject_tag %></p>
-</div>
+	<%= link_to 'edit', edit_project_path(@project), :style => "margin-left:150px;" %>
 
 </div>
 <div style="position:absolute;left:850px;top:75px;z-index:999;">
@@ -39,23 +36,51 @@
 </div>
 </div>
 
+<div style="position:absolute;left:50px;top:465px;z-index:999;">
+	<%= image_tag @project.community_image.url(:medium), :class => "img-circle" %>
+</div>
+
 <div id="community-partner" style="height:250px;background-color:#fff;">
-	<div class="offset2 span12" >
-		<h3 style="text-align:center;"> Community Partner </h3>
-		<p>Have community image display halfway between this section and the header image above. Text describing the background information about this community and why it needs this technology. Have stats on community size and location. Have quote from community.</p>
+	<div class="offset5 span9" >
+		<h3 style="text-align:center;"> Community Partner - <%= @project.city if @project.city %>, <%= @project.country if @project.country %></h3>
+			<%= @project.community_overview %>
 	</div>
 </div>
+
+<h2 style="text-align:center;margin-top:-15px;margin-bottom:30px;"><i>"<%= @project.quote %>"</i></h2>
 
 <div id="problem-statement" style="height:250px;background-color:#fff;">
 	<div class="offset2 span12" >
-		<h3 style="text-align:center;"> Problem Statement</h3>
+		<div class="span8">
+			<h3 style="text-align:center;"> Problem Statement</h3>
+			<%= @project.overview %>
+			</div>
+		<div class="span3">
+		<%= image_tag @project.tech_image.url, :style => "height:200px;margin:15px;margin-top:45px;" if @project.tech_image %>
+		</div>
+</div>
 	</div>
 </div>
 
-<div id="current-documentation" style="height:250px;background-color:#999;">
-	<div class="offset2 span12" >
-		<h3 style="text-align:center;">Current Documentation </h3>
-		<p> Have here a slideshow of document icon images each representing a document uploaded to the project (MVP) Have link in corner that creates modal window for uploading new documents. </p>
+<div id="current-documentation" style="width:100%;display:inline-block;white-space:nowrap;height:270px;background-color:#999;overflow-x:scroll;overflow-y:hidden;">
+	<div class="doc" style="margin-top:20px;text-wrap:normal;">
+		<h5 style="position:relative;padding-top:30px;margin-bottom:-45px;margin-left:50px;"> Document title</h5>
+		<%= image_tag "/images/doc-icon.png", :style => "height:200px;" %>
+
+		<% if @project.assets.present? %>
+		<% @project.assets.each do |asset| %>
+		<%= image_tag "/images/doc-icon.png", :style => "height:200px;" %>
+		<% end %>
+		<% else %>
+
+		<% end %>
+
+	</div>
+	<a href="#" class="button">Add Document</a>
+
+		<div class="offset2 span12" >
+			<h3 style="text-align:center;">Current Documentation </h3>
+<p> Have here a slideshow of document icon images each representing a document uploaded to the project (MVP) Have link in corner that creates modal window for uploading new documents. </p>
 		<p>Adv: Display name on icon. When hover display rating and download button. Can send users to page listing all documents where communities can submit rating of the document and leave comments for it's improvement. </p>
 		<p>Note: Since documents in this section can be rated and reviewed I hope that users will use it to store final documentation rather than working docs. May need to keep this in mind as developings site. </p>
 	</div>
@@ -112,11 +137,16 @@
 	</div>
 </div>
 
-<div id="partner-organizations" style="height:350px;background-color:#fff;">
+<div id="partner-organizations" style="min-height:150px;background-color:#fff;">
 	<div class="offset2 span12" >
+		<% if @project.partner_organizations %>
 		<p class="span2" style="margin-top:65px;text-align:left;"> SUPPORTED BY </p>
+		<p  style="margin-top:65px;text-align:left;"> <%= @project.partner_organizations %></p>
+		<% end %>
 
+		<% if false %>
 		<p style="margin-top:165px;text-align:center;">with contributors like you</p>
+		<% end %>
 	</div>
 </div>
 
@@ -134,15 +164,15 @@
 			<li>Mission</li>
 			<li>Team</li>
 		</ul>
-		<ul class="span4" style="margin-top:25px;color:white;">
+		<ul class="span3" style="margin-top:25px;color:white;">
 			CONTACT
 			<li>Partners</li>
 			<li>Press</li>
 			<li>Jobs</li>
 		</ul>
-			<p class="span4" style="margin-top:25px;color:white;">
+			<p class="span3" style="margin-top:25px;color:white;">
 			APPROMONDE 2013
-			<p class="span4"  style="color:white;">Privacy Policy, Terms</p>
+			<p class="span3"  style="color:white;">Privacy Policy, Terms</p>
 		</ul>
 	</div>
 </div>

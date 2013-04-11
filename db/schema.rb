@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408045816) do
+ActiveRecord::Schema.define(:version => 20130409171807) do
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at",            :null => false
@@ -55,14 +55,25 @@ ActiveRecord::Schema.define(:version => 20130408045816) do
     t.string   "country"
     t.string   "continent"
     t.string   "partner_organizations"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.string   "name"
     t.string   "main_image_file_name"
     t.string   "main_image_content_type"
     t.integer  "main_image_file_size"
     t.datetime "main_image_updated_at"
     t.integer  "moderator_id"
+    t.string   "summary"
+    t.text     "community_overview"
+    t.string   "community_image_file_name"
+    t.string   "community_image_content_type"
+    t.integer  "community_image_file_size"
+    t.datetime "community_image_updated_at"
+    t.string   "tech_image_file_name"
+    t.string   "tech_image_content_type"
+    t.integer  "tech_image_file_size"
+    t.datetime "tech_image_updated_at"
+    t.string   "quote"
   end
 
   create_table "tasks", :force => true do |t|
