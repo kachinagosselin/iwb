@@ -54,7 +54,7 @@
     <% else %>
     <td>Unread</td>
     <% end %>
-    <td><%= message.from_name %></td>
+    <td><%= message.from_user_id %></td>
     <td><%= link_to message.title,  user_message_path(@user, message) %></td>
     <td><%= message.return_time %></td>
     <td><%= link_to 'Archive', {:controller => 'messages', :action => 'archive', :id => message.id} %></td>

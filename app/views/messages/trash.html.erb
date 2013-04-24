@@ -47,7 +47,7 @@
 <% @mif = @messages_in_folder.sort_by(&:created_at).reverse %>
 <% @mif.each do |message| %>
   <tr>
-    <td><%= message.from_name%></td>
+    <td><%= message.from_user_id%></td>
     <td><%= link_to message.title,  user_message_path(@user, message) %></td>
     <td><%= message.return_time %></td>
     <td><%= link_to 'Return to Archives', {:controller => 'messages', :action => 'archive', :id => message.id} %></td>

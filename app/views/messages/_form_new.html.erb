@@ -3,13 +3,13 @@
   <%= f.error_notification %>
   <div class="row">
   <div class="span1" id="form-labels">
-    <p style="margin-top:5px;">Name: </p>
+    <p style="margin-top:5px;">User ID: </p>
     <p style="margin-top:28px;">Subject: </p>
   </div>
 
   <div class="span9">
   <div class="form-inputs">
-    <%= f.input :name, :label => false, :input_html => 
+    <%= f.input :to_user_id, :label => false, :input_html => 
     { :style => 'width: 478px'} %>
     <%= f.hidden_field :from_user_id, :value => @user.id %>
     <%= f.input :title, :label => false, :input_html => 

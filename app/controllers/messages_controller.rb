@@ -33,10 +33,7 @@ class MessagesController < ApplicationController
   # GET user/:user_id/messages/1/edit
   def edit
       @user = User.find(params[:user_id])
-      if :id.nil?
-      else
       @message = @user.messages.find(params[:id])  
-      end
   end
   
   # GET user/:user_id/messages/inbox/1
@@ -80,8 +77,6 @@ class MessagesController < ApplicationController
   # GET user/:user_id/messages/archive/1
   def archive
       @user = User.find(params[:user_id])
-      if params[:id].nil?
-      else
       @message = @user.messages.find(params[:id])  
       @message.folder = "archive"  
       respond_to do |format|
@@ -94,16 +89,12 @@ class MessagesController < ApplicationController
               format.json { render json: @message.errors, status: :unprocessable_entity}
           end
       end
-      end
   end
   
   # GET user/:user_id/messages/trash
   # GET user/:user_id/messages/trash/1
   def trash
       @user = User.find(params[:user_id])
-
-      if params[:id].nil?
-      else
       @message = @user.messages.find(params[:id])  
       @message.folder = "trash"  
       respond_to do |format|
@@ -115,7 +106,6 @@ class MessagesController < ApplicationController
               format.html { redirect_to user_messages_path(@user), alert: 'Message was unsuccessfully moved to trash.' }
               format.json { render json: @message.errors, status: :unprocessable_entity}
           end
-      end
       end
   end
 

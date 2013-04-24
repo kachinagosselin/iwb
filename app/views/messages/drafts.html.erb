@@ -35,7 +35,7 @@
 <% @messages_in_folder.each do |message| %>
 <% if message.folder == "drafts" %>
   <tr>
-    <td><%= message.to_name %></td>
+    <td><%= message.to_user_id %></td>
     <td><%= link_to message.title,  edit_user_message_path(@user, message) %></td>
     <td><%= link_to 'Edit', edit_user_message_path(@user, message) %> | <%= link_to 'Delete', [message.user, message], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

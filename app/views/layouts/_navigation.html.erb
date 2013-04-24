@@ -4,7 +4,9 @@ $('.dropdown-toggle').dropdown()
 <!--
 <%= link_to "Appromonde", root_path, :class => 'brand' %>
 -->
-<ul class="nav pull-right">
+<ul class="nav pull-right" style="margin-top:8px;">
+  <input type="text" class="search-query" placeholder="Search" style="float:left;margin-top:7px;">
+  
   <% if user_signed_in? %>
   <li><%= link_to 'Home', root_path %></li>
   <li><%= link_to 'Inbox', user_messages_path(current_user) %></li>

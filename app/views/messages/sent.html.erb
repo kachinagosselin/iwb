@@ -36,7 +36,7 @@
 <% @messages_in_folder.each do |message| %>
 <% if message.folder == "sent" %>
   <tr>
-    <td><%= message.to_name %></td>
+    <td><%= message.to_user_id %></td>
     <td><%= link_to message.title,  user_message_path(@user, message) %></td>
     <td><%= message.return_time %></td>
     <td><%= link_to 'Delete', [message.user, message], method: :delete, data: { confirm: 'Are you sure?' } %></td>

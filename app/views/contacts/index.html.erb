@@ -23,7 +23,7 @@
 <h1>Contacts List</h1>
 <% if @user.contacts.present? %>
 <% @user.contacts.each do | contact | %>
-<p> <%= link_to contact.contact_name, user_horses_path(User.find(contact.contact_id)) %>    | <%= link_to "Remove", [contact.user, contact], method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<p> <%= link_to contact.contact_name, user_path(User.find(contact.contact_id)) %>    | <%= link_to "Remove", [contact.user, contact], method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>
 <% end %>
 </div>

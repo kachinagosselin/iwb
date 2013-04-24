@@ -26,3 +26,4 @@ gem "paperclip", "~> 3.0"
 gem "rmagick", "2.12.0", :require => 'RMagick'
 gem 'heroku'
 gem 'bootstrap-sass'
+gem 'aws-sdk'
